@@ -23,18 +23,19 @@ def access_openai(prompt_value, image_size, num):
         size = image_size,
         response_format = "b64_json"
     )
+    tstamp = response["created"]
     # image_url = response["data"][0]["url"] #URL出力にしたとき(単一出力)
     # for ob in response["data"]: #URL出力にしたとき(複数出力)
     #     print("¥n" + ob.url)
     # image_b64 = response["data"][0]["b64_json"] #json出力にしたとき(単一出力)
     # binarry_data = base64.b64decode(image_b64)
-    # with open("created_image.png", "wb") as f:
+    # with open(f"result/{tstamp}_created_image.png", "wb") as f:
     #     f.write(binarry_data)
     for number, data in zip(range(num), response["data"]): #json出力にしたとき(複数出力)
         binarry_data = base64.b64decode(data["b64_json"])
-    with open(f"created{number}_image.png", "wb") as f:
+    with open(f"result/{tstamp}_created_image_{number}.png", "wb") as f:
         f.write(binarry_data)
-    print("ファイルに保存しました。")
+    print("ファイルに保存しました。:")
 
 
 if __name__ == "__main__":

@@ -22,13 +22,13 @@ def access_openai(image_size, num):
         size = image_size,
         response_format = "b64_json"
     )
-    
+    tstamp = response["created"]
     for number, data in zip(range(num), response["data"]):
         binarry_data = base64.b64decode(data["b64_json"])
-        with open(f"variation{number}_image.png", "wb") as f:
+        with open(f"result/{tstamp}_variation_image_{tstamp}.png", "wb") as f:
             f.write(binarry_data)
 
-    print("ファイルに保存しました。")
+    print("ファイルに保存しました。:")
 
 
 if __name__ == "__main__":

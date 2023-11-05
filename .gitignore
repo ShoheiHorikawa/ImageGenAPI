@@ -161,3 +161,4 @@ cython_debug/
 
 # my file
 api_key.txt
+result/*.png
