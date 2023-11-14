@@ -162,3 +162,5 @@ cython_debug/
 # my file
 api_key.txt
 result/*.png
+slack_app_token.txt
+slack_bot_token.txt
